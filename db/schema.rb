@@ -12,27 +12,27 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_04_17_084419) do
   create_table "games", force: :cascade do |t|
-    t.integer "instructor_id_id", null: false
-    t.integer "player_id_id"
+    t.integer "instructors_id", null: false
+    t.integer "players_id"
     t.string "name"
     t.text "description"
     t.integer "tasks_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["instructor_id_id"], name: "index_games_on_instructor_id_id"
-    t.index ["player_id_id"], name: "index_games_on_player_id_id"
+    t.index ["instructors_id"], name: "index_games_on_instructors_id"
+    t.index ["players_id"], name: "index_games_on_players_id"
     t.index ["tasks_id"], name: "index_games_on_tasks_id"
   end
 
   create_table "instructors", force: :cascade do |t|
-    t.integer "game_id_id"
-    t.integer "task_id_id"
-    t.integer "user_id_id", null: false
+    t.integer "games_id"
+    t.integer "tasks_id"
+    t.integer "users_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id_id"], name: "index_instructors_on_game_id_id"
-    t.index ["task_id_id"], name: "index_instructors_on_task_id_id"
-    t.index ["user_id_id"], name: "index_instructors_on_user_id_id"
+    t.index ["games_id"], name: "index_instructors_on_games_id"
+    t.index ["tasks_id"], name: "index_instructors_on_tasks_id"
+    t.index ["users_id"], name: "index_instructors_on_users_id"
   end
 
   create_table "multiple_choices", force: :cascade do |t|
@@ -43,56 +43,50 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_084419) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.integer "game_id_id"
-    t.integer "user_id_id"
+    t.integer "games_id"
+    t.integer "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id_id"], name: "index_players_on_game_id_id"
-    t.index ["user_id_id"], name: "index_players_on_user_id_id"
+    t.index ["games_id"], name: "index_players_on_games_id"
+    t.index ["users_id"], name: "index_players_on_users_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "instructor_id_id", null: false
-    t.integer "player_id_id"
+    t.integer "instructors_id", null: false
     t.string "name"
     t.text "description"
     t.text "feedback"
-    t.integer "tasks_id"
     t.integer "type", default: 0
-    t.integer "multiple_choice_id"
+    t.integer "multiple_choices_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["instructor_id_id"], name: "index_tasks_on_instructor_id_id"
-    t.index ["multiple_choice_id"], name: "index_tasks_on_multiple_choice_id"
-    t.index ["player_id_id"], name: "index_tasks_on_player_id_id"
-    t.index ["tasks_id"], name: "index_tasks_on_tasks_id"
+    t.index ["instructors_id"], name: "index_tasks_on_instructors_id"
+    t.index ["multiple_choices_id"], name: "index_tasks_on_multiple_choices_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.integer "instructor_id_id"
-    t.integer "player_id_id"
-    t.integer "game_id_id"
+    t.integer "instructors_id"
+    t.integer "players_id"
+    t.integer "games_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id_id"], name: "index_users_on_game_id_id"
-    t.index ["instructor_id_id"], name: "index_users_on_instructor_id_id"
-    t.index ["player_id_id"], name: "index_users_on_player_id_id"
+    t.index ["games_id"], name: "index_users_on_games_id"
+    t.index ["instructors_id"], name: "index_users_on_instructors_id"
+    t.index ["players_id"], name: "index_users_on_players_id"
   end
 
-  add_foreign_key "games", "instructor_ids"
-  add_foreign_key "games", "player_ids"
+  add_foreign_key "games", "instructors", column: "instructors_id"
+  add_foreign_key "games", "players", column: "players_id"
   add_foreign_key "games", "tasks", column: "tasks_id"
-  add_foreign_key "instructors", "game_ids"
-  add_foreign_key "instructors", "task_ids"
-  add_foreign_key "instructors", "user_ids"
-  add_foreign_key "players", "game_ids"
-  add_foreign_key "players", "user_ids"
-  add_foreign_key "tasks", "instructor_ids"
-  add_foreign_key "tasks", "multiple_choices"
-  add_foreign_key "tasks", "player_ids"
-  add_foreign_key "tasks", "tasks", column: "tasks_id"
-  add_foreign_key "users", "game_ids"
-  add_foreign_key "users", "instructor_ids"
-  add_foreign_key "users", "player_ids"
+  add_foreign_key "instructors", "games", column: "games_id"
+  add_foreign_key "instructors", "tasks", column: "tasks_id"
+  add_foreign_key "instructors", "users", column: "users_id"
+  add_foreign_key "players", "games", column: "games_id"
+  add_foreign_key "players", "users", column: "users_id"
+  add_foreign_key "tasks", "instructors", column: "instructors_id"
+  add_foreign_key "tasks", "multiple_choices", column: "multiple_choices_id"
+  add_foreign_key "users", "games", column: "games_id"
+  add_foreign_key "users", "instructors", column: "instructors_id"
+  add_foreign_key "users", "players", column: "players_id"
 end

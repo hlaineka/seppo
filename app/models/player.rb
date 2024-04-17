@@ -1,4 +1,4 @@
 class Player < ApplicationRecord
-  has_many :game_id
-  belongs_to :user_id
+  has_many :game
+  belongs_to :user
 end

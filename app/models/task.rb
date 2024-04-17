@@ -4,7 +4,7 @@ class Task < ApplicationRecord
     multiple: 1
   }
 
-  belongs_to :instructor_id
-  has_many :player_id
-  has_many :multiple_choice_id
+  belongs_to :instructor
+  has_many :player
+  has_many :multiple_choice
 end

@@ -1,5 +1,5 @@
 class Instructor < ApplicationRecord
-  belongs_to: user_id
-  has_many :game_id
-  has_many :task_id
+  belongs_to: user
+  has_many :game
+  has_many :task
 end
