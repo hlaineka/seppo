@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instructor_id: one
+  player_id: one
+  or: MyString
+  'null': MyString
+  name: MyString
+  description: MyText
+  tasks: one
+  or: MyString
+  'null': MyString
+
+two:
+  instructor_id: two
+  player_id: two
+  or: MyString
+  'null': MyString
+  name: MyString
+  description: MyText
+  tasks: two
+  or: MyString
+  'null': MyString
