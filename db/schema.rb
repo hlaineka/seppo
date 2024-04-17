@@ -65,13 +65,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_084419) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.text "username"
     t.integer "instructors_id"
     t.integer "players_id"
-    t.integer "games_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["games_id"], name: "index_users_on_games_id"
     t.index ["instructors_id"], name: "index_users_on_instructors_id"
     t.index ["players_id"], name: "index_users_on_players_id"
   end
@@ -86,7 +84,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_084419) do
   add_foreign_key "players", "users", column: "users_id"
   add_foreign_key "tasks", "instructors", column: "instructors_id"
   add_foreign_key "tasks", "multiple_choices", column: "multiple_choices_id"
-  add_foreign_key "users", "games", column: "games_id"
   add_foreign_key "users", "instructors", column: "instructors_id"
   add_foreign_key "users", "players", column: "players_id"
 end

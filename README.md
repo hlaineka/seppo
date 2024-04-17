@@ -57,7 +57,6 @@ Things you may want to cover:
 username: string (needs to be validated as email)  
 instructor_id or null  
 player_id or null  
-game_id: multiple game ids or null  
 // no password data saved at this point ??  
   
 **INSTRUCTORS**  

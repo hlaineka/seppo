@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get 'tasks/index'
-  get 'players/index'
-  get 'instructors/index'
-  get 'users/index'
+  get 'users/show'
+  get 'users/new'
+  post 'users/create'
+  post 'users/destroy'
+  get '/users', to: 'users#index'
+  get '/task', to: 'tasks#index'
+  get '/players', to: 'players#index'
+  get '/instructors', to: 'instructors#index'
   get '/games', to: 'games#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,5 +15,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "games#index"
 end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :instructor
-  belongs_to :player
+  has_one :instructor, required: false
+  has_one :player, required: false
   has_many :game
 end

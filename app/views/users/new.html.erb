@@ -1,0 +1,33 @@
+<%= form_for @users, as: :users, url: {action: :create} do |f| %>   
+    <% if @users.errors.any? %>
+    <ul>
+    <% @users.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+        
+    <h3>Add a User</h3>   
+
+    <div class="field">   
+        <%= f.label :username %>   
+          <%= f.text_field :username %>   
+    </div>   
+
+    <div class="field">   
+         <%= f.label :instructors_id %>   
+         <%= f.number_field :instructors_id %>   
+    </div>   
+
+    <div class="field">   
+       <%= f.label :players_id %>   
+          <%= f.number_field :players_id %>   
+    </div>   
+     </p>   
+  </div>   
+  <div class="actions">   
+    <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
+    <%= f.submit 'Create User' %>   
+  </div>   
+<% end %>   
+</div>  
