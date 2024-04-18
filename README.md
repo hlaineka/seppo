@@ -118,3 +118,6 @@ status: FINISHED | UNFINISHED
   
 controllers and models for games, users, instructors, players, tasks, multiple choices  
 Next populate (by hand, if I had time I would make a script / test) and build views to show data so that correct functionality can be checked
+
+After taking a look at things, I decided to create (kind of mock or temporary) views for different tables with option to add data. First step was to make it work with users. My main goal for now is to make users table have all the methods, make some form of views etc, so that those could be used to develop other endpoints. 
+

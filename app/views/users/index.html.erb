@@ -5,7 +5,7 @@
       </div>   
       <br>   
       
-     <table class="table table-bordered table-striped">   
+     <table class="table">   
        <tr>   
         <th>ID</th>   
         <th>Username</th>   
@@ -17,10 +17,9 @@
       <% @users.each do |user| %>   
           <tr>   
             <td><%= user.id %></td>   
-            <td><%= user.username %></td>   
+            <td><%= link_to user.username, user_path(user) %></td>   
             <td><%= user.instructors_id %></td> 
-            <td><%= user.players_id %></td> 
-              
+            <td><%= user.players_id %></td>
            </tr>   
       <% end %>   
     </table>  

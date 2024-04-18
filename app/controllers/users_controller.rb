@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     
   # GET method to get one by id   
   def show   
-    @users = User.find(users[:id])   
+    @users = User.find(params[:id])   
   end   
     
   # GET method for the new add form   
