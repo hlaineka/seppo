@@ -1,7 +1,13 @@
 <h1>Users</h1>  
-      
+
+<% if notice %>
+  <div id="notice" class="alert alert-success" role="alert" style="color: white">
+    <%= notice %>
+  </div>
+<% end %>
+
       <div>   
-        <%= link_to 'Add User', users_new_path %>   
+        <%= link_to 'Add User', new_user_path %>   
       </div>   
       <br>   
       
@@ -20,6 +26,7 @@
             <td><%= link_to user.username, user_path(user) %></td>   
             <td><%= user.instructors_id %></td> 
             <td><%= user.players_id %></td>
+            <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
            </tr>   
       <% end %>   
     </table>  

@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/:id', to: 'users#show', as: 'user'
-  get 'users/new'
-  post 'users/create'
-  delete 'users/:id', to: 'users#destroy'
-  get '/users', to: 'users#index'
+  resources :users
+
   get '/task', to: 'tasks#index'
   get '/players', to: 'players#index'
   get '/instructors', to: 'instructors#index'

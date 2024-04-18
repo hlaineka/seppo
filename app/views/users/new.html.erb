@@ -1,8 +1,9 @@
-<%= form_for @users, as: :users, url: {action: :create} do |f| %>   
-    <% if @users.errors.any? %>
+<%= form_with(model: @user) do |f| %>   
+    <% if @user.errors.any? %>
+    <p>User not saved!</p>
     <ul>
-    <% @users.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <% @user.errors.each do |error| %>
+      <li><%= error.full_message %></li>
       <% end %>
       </ul>
     <% end %>
@@ -26,7 +27,7 @@
      </p>   
   </div>   
   <div class="actions">   
-    <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
+    <%= link_to 'Back', users_path %>   
     <%= f.submit 'Create User' %>   
   </div>   
 <% end %>   

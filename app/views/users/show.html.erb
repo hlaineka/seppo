@@ -1,6 +1,8 @@
 <h1>User info</h1>
 
-<p>ID: <%= @users.id %></p>   
-<p>Username: <%= @users.username %></p>   
-<p>Instructor ID: <%= @users.instructors_id %></p> 
-<p>Player ID: <%= @users.players_id %></p> 
+<p>ID: <%= @user.id %></p>   
+<p>Username: <%= @user.username %></p>   
+<p>Instructor ID: <%= @user.instructors_id %></p> 
+<p>Player ID: <%= @user.players_id %></p> 
+
+<%= link_to 'Back', users_path %> 
